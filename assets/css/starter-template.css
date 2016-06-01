@@ -1,0 +1,40 @@
+@media (max-width: 767px) {
+    .img-responsive {
+        max-width: 50%;
+        min-width: 300px;
+         margin: 0 auto;
+
+    }
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center
+
+}
+.row > div {
+    border:1px solid black;
+}
+.product .img-responsive {
+
+}
+.row {
+    border: blue 1px solid;
+}
+.my-column {
+    background-color: green;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 0px;
+    margin-right: 0px;
+    border-right: 0px;
+}
+.my-column:first-child {
+    background-color: white;
+}
+.inner-content {
+    background: #eee;
+    border: #999;
+    border-radius: 5px;
+    padding: 15px;
+}
