@@ -1,10 +1,6 @@
 /*jslint browser: true*/
 /*global $, jQuery, alert*/
-var data = [
- {"Id": 10004, "PageName": "club"},
- {"Id": 10040, "PageName": "qaz"},
- {"Id": 10059, "PageName": "jjjjjjj"}
-];
+
 
 function prepareEventHandlers() {
 
@@ -17,22 +13,34 @@ function prepareEventHandlers() {
 
 function loadJsonData() {
     $('.more-info').click(function() {
+
+
+
+
             $.ajax({
-                    url: 'data/json/article.json',
+                    url: 'assets/data/article.json',
                     type: 'get',
+                    dataType : 'json',
                     success: function(data) {
-                     $.each(item.items, function(index,item) {
-                        console.log(item.Id+" "+item.title)
-                     });
+                        console.log(data);
+                        $.each(data, function(key, item) {
+                        console.log("<input type='checkbox' data-price='" + item.Price + "' name='" + item.Name + "' value='" + item.ID + "'/>" + item.Name + "<br/>");
+
+                    });
+                    /* $.each(item.items, function(index,item) {
+                        alert('Success');
+                        console.log("Value of the itemest "+item.Id+" "+item.title)
+                     });*/
                     },
                     error: function(e) {
-                        console.log(e.message);
+                        console.log('error message'+e.message);
+                        /*alert('Error');*/
                     }
              });
         });
 }
 
-/* data is loaded synchronously loaded on page ready /
+/* data is loaded synchronously loaded on page ready
 function loadData()
  $.ajax({
         type : 'GET',
@@ -52,11 +60,11 @@ function loadData()
             $('#leader').tmpl(topics).appendTo('#top3');
         }
     });
-
+*/
 
 // this will be executed once the document is ready
 $(document).ready(function () {
     prepareEventHandlers();
     // console.log("Event handlers loaded");
-
+loadJsonData();
 });
