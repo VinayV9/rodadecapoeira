@@ -1,70 +1,110 @@
 /*jslint browser: true*/
 /*global $, jQuery, alert*/
 
-
 function prepareEventHandlers() {
 
     $('.more-info').click(function() {
                     var elementA = $(this).parentsUntil('.row.article').last().parent();
                     console.log(elementA.html());
-                    elementA.find('.detail-section').toggle();
-    });
+                    var moreInfoClicker =  elementA.find('.detail-section')
+                    loadJsonData(moreInfoClicker)
+                    moreInfoClicker.toggle();
+       });
 }
-
-function loadJsonData() {
-    $('.more-info').click(function() {
-
-
-
-
-            $.ajax({
-                    url: 'assets/data/article.json',
+/* a specific details for a roda */
+function initLatestRoda() {
+     var articlesContainer = $(document).find('.col-md-12.articles');
+     var latestArticle = null;
+     console.log("Step1 ");
+     console.log(""+articlesContainer.html());
+     //Iterate through the json collection
+     //Load template
+     //Append template  as the latest element of the content section
+     //Map current Json data with $Jquery node
+     $.ajax({
+                    url: 'assets/data/latest.json',
                     type: 'get',
                     dataType : 'json',
                     success: function(data) {
-                        console.log(data);
-                        $.each(data, function(key, item) {
-                        console.log("<input type='checkbox' data-price='" + item.Price + "' name='" + item.Name + "' value='" + item.ID + "'/>" + item.Name + "<br/>");
+                        console.log("Step 2 ");
+                          $.each(data, function(key, item) {
+                             console.log("Step 3 ");
+//                             if (latestArticle === null){
+//                             latestArticle = $(articlesContainer).filter('.row.article:last');
+                             $(".col-md-12.articles").load("article.html .row.article",
+                                                       function(responseTxt, statusTxt, xhr){
+                                                        if(statusTxt == "success") {
+                                                            console.log("First article");
+                                                            console.log(articlesContainer.html());
+                                                            var latestArticle = $(articlesContainer).filter('.row.article:last');
+                                                            // Append the text value of the article in the section
+                                                            $(latestArticle).find('.detail-section').text(item.Description);
+                                                        }
+                                                        if(statusTxt == "error")
+                                                        alert("Error: " + xhr.status + ": " + xhr.statusText);
+                            });
+//                            } else {
+//
+//                                //Load the other elements with the template
+//                            }
+
+
+                               // Go the latest article
+                            //$(articlesContainer).load("article.html .row.article");
+
 
                     });
-                    /* $.each(item.items, function(index,item) {
-                        alert('Success');
-                        console.log("Value of the itemest "+item.Id+" "+item.title)
-                     });*/
                     },
                     error: function(e) {
                         console.log('error message'+e.message);
                         /*alert('Error');*/
                     }
              });
-        });
+}
+function fetchLatestRoda() {
+     $.ajax({
+                    url: 'assets/data/latest.json',
+                    type: 'get',
+                    dataType : 'json',
+                    success: function(data) {
+                          $.each(data, function(key, item) {
+                            moreInfoElement.text(item.Description);
+                    });
+                    },
+                    error: function(e) {
+                        console.log('error message'+e.message);
+                        /*alert('Error');*/
+                    }
+             });
+
+
+    //Iterate through the json collection
+    //Load template
+    //Append template  as the latest element of the content section
+    //Map current Json data with $Jquery node
+    //
 }
 
-/* data is loaded synchronously loaded on page ready
-function loadData()
- $.ajax({
-        type : 'GET',
-        dataType : 'json',
-        url: 'data/json/topics.json',
-        success : function(data) {
-            console.log(data);
-            var topics = [];
-            $.each(data.results, function(index, obj){
-                topics.push({
-                    username: obj.TopicName,
-                    mentions: obj.LastHourCount,
-                    totalcount: obj.TotalCount,
-                    daycount: obj.Last24HoursCount
-                });
-            });
-            $('#leader').tmpl(topics).appendTo('#top3');
-        }
-    });
-*/
-
+/* Load  a specific details for a roda */
+function loadJsonData(moreInfoElement) {
+            $.ajax({
+                    url: 'assets/data/article.json',
+                    type: 'get',
+                    dataType : 'json',
+                    success: function(data) {
+                    $.each(data, function(key, item) {
+                        moreInfoElement.text(item.Description);
+                    });
+                    },
+                    error: function(e) {
+                        console.log('error message'+e.message);
+                    }
+             });
+}
 // this will be executed once the document is ready
 $(document).ready(function () {
     prepareEventHandlers();
-    // console.log("Event handlers loaded");
-loadJsonData();
+    initLatestRoda();
+
+
 });
