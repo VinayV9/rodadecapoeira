@@ -1,12 +1,11 @@
 /*jslint browser: true*/
 /*global $, jQuery, alert*/
 
-
 // TODO fix issue with event not loaded when generating dynamic content
 // http://stackoverflow.com/questions/15090942/jquery-event-handler-not-working-on-dynamic-content
 
 function prepareEventHandlers() {
-     // Bind event to static content
+     // Bind event ONLY to  static content
      /*  $('.more-info').click(function() {
                     var elementA = $(this).parentsUntil('.row.article').last().parent();
                     console.log(elementA.html());
@@ -14,7 +13,7 @@ function prepareEventHandlers() {
                     loadJsonData(moreInfoClicker)
                     moreInfoClicker.toggle();
        });*/
-     // Bind event to dynamically generated content
+     // Bind event to dynamically generated content with ON
       $(document.body).on('click','.more-info',function() {
                     var elementA = $(this).parentsUntil('.row.article').last().parent();
                     console.log(elementA.html());
@@ -38,7 +37,7 @@ function initLatestRoda() {
         template = data;
       }
      });
-       
+     //Data binding
      $.ajax({
       url: 'assets/data/latest.json',
       type: 'get',
@@ -52,7 +51,7 @@ function initLatestRoda() {
         latestArticle.find('.detail-section').text(item.Description);
         latestArticle.find('.location').text(item.Location);
         latestArticle.find('date').text(item.Date);
-        latestArticle.find('date').attr("src",item.Image);
+        latestArticle.find('.img-responsive.center-block').attr("src",item.Image);
         });
             },
             error: function(e) {
@@ -77,7 +76,8 @@ function fetchLatestRoda() {
                     }
              });
 }
-/* Load  a specific details for a roda */
+
+/* Load a specific details for a roda */
 function loadJsonData(moreInfoElement) {
             $.ajax({
                     url: 'assets/data/article.json',
@@ -93,7 +93,8 @@ function loadJsonData(moreInfoElement) {
                     }
              });
 }
-// this will be executed once the document is ready
+
+/* This will be executed once the document is ready */
 $(document).ready(function () {
     prepareEventHandlers();
     initLatestRoda();
