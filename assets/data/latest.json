@@ -1,25 +1,29 @@
 [{
     "ID": 1,
     "Title": "Roda Ecamar",
-    "Description": "These are the details about the roda. These are the details about the rsaddsdfsdfodaThesegdfgd are tsdfsfsfsfsfsfsfhe details about the rodaTsdfsfsdfhese are the details about the rodaThese are the details about the rodaThese are the details about the rodaThese are the details about the rodaThese are the details about the roda.These are the details about the roda. These are the details about the rsaddsdfsdfodaThesegdfgd are tsdfsfsfsfsfsfsfhe details about the rodaTsdfsfsdfhese are the details about the rodaThese are the details about the rodaThese are the details about the rodaThese are the details about the rodaThese are the details about the roda These are the details about the roda. These are the details about the rsaddsdfsdfodaThesegdfgd are tsdfsfsfsfsfsfsfhe details about the rodaTsdfsfsdfhese are the details about the rodaThese are the details about the rodaThese are the details about the rodaThese are the details about the rodaThese are the details about the roda",
-    "Price": 0,
-    "Location": 0
+    "Description": "Roda open to the 4th capoeira angola encounter event participant",
+    "Date": "15 Jul 2016",
+    "Location": "King Street NewTown, NSW",
+    "Image":"assets/images/newtown-roda.jpg" 
 }, {
     "ID": 2,
-    "Title": "Beef",
-    "Description": " 2",
-    "Price": 0,
-    "Location": 0
+    "Title": "Roda de Angoleiros Do Mar",
+    "Description": "Angoleiros do Mar organise a roda perto do mar ",
+    "Date": "16 Jul 2016",
+    "Location": "Iha de Mare, Salvador BA",
+    "Image":"assets/images/newtown-roda.jpg" 
 }, {
     "ID": 3,
-    "Title": "Chicken",
-    "Description": " 3",
-    "Price": 0,
+    "Title": "Roda Ecamar Youth Encounter",
+    "Description": "Third description",
+    "Date": "17 Jul 2016",
     "Location": 0
 }, {
     "ID": 4,
-    "Title": "Ham",
-    "Description": "These are the details about the roda. These are the details about the rsaddsdfsdfodaThesegdfgd are tsdfsfsfsfsfsfsfhe details about the rodaTsdfsfsdfhese are the details about the rodaThese are the details about the rodaThese are the details about the rodaThese are the details about the rodaThese are the details about the roda.These are the details about the roda. These are the details about the rsaddsdfsdfodaThesegdfgd are tsdfsfsfsfsfsfsfhe details about the rodaTsdfsfsdfhese are the details about the rodaThese are the details about the rodaThese are the details about the rodaThese are the details about the rodaThese are the details about the roda These are the details about the roda. These are the details about the rsaddsdfsdfodaThesegdfgd are tsdfsfsfsfsfsfsfhe details about the rodaTsdfsfsdfhese are the details about the rodaThese are the details about the rodaThese are the details about the rodaThese are the details about the rodaThese are the details about the roda",
-    "Price": 0,
-    "Location": 0
+    "Title": "Roda Mano no Chao",
+    "Description": "Escola de capoeira mano no chao",
+   "Date": "18 Jul 2016",
+    "Location": 0,
+    "Image":"assets/images/Cabaca_um_dois_tres_quatro.jpg" 
+   
 }]
