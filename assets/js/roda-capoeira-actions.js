@@ -52,11 +52,12 @@ function initLatestRoda() {
         latestArticle.find('.detail-section').text(item.Description);
         latestArticle.find('.location').text(item.Location);
         latestArticle.find('date').text(item.Date);
+        latestArticle.find('date').attr("src",item.Image);
         });
             },
             error: function(e) {
                 console.log('error message'+e.message);
-                        /*alert('Error');*/
+                /*alert('Error');*/
             }
     });
 }

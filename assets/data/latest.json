@@ -17,12 +17,13 @@
     "Title": "Roda Ecamar Youth Encounter",
     "Description": "Third description",
     "Date": "17 Jul 2016",
-    "Location": 0
+    "Location": 0,
+    "Image":"assets/images/newtown-roda.jpg" 
 }, {
     "ID": 4,
     "Title": "Roda Mano no Chao",
     "Description": "Escola de capoeira mano no chao",
-   "Date": "18 Jul 2016",
+    "Date": "18 Jul 2016",
     "Location": 0,
     "Image":"assets/images/Cabaca_um_dois_tres_quatro.jpg" 
    
