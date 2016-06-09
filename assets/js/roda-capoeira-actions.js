@@ -38,7 +38,7 @@ function initLatestRoda() {
         template = data;
       }
      });
-    
+       
      $.ajax({
       url: 'assets/data/latest.json',
       type: 'get',
