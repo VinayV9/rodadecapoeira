@@ -1,11 +1,12 @@
 /*jslint browser: true*/
 /*global $, jQuery, alert*/
 
+
 // TODO fix issue with event not loaded when generating dynamic content
 // http://stackoverflow.com/questions/15090942/jquery-event-handler-not-working-on-dynamic-content
 
 function prepareEventHandlers() {
-     // Bind event ONLY to  static content
+     // Bind event to static content
      /*  $('.more-info').click(function() {
                     var elementA = $(this).parentsUntil('.row.article').last().parent();
                     console.log(elementA.html());
@@ -13,19 +14,27 @@ function prepareEventHandlers() {
                     loadJsonData(moreInfoClicker)
                     moreInfoClicker.toggle();
        });*/
-     // Bind event to dynamically generated content with ON
-      $(document.body).on('click','.more-info',function() {
+     // Bind event to dynamically generated content
+      /*$(document.body).on('click','.more-info',function() {
                     var elementA = $(this).parentsUntil('.row.article').last().parent();
                     console.log(elementA.html());
                     var moreInfoClicker =  elementA.find('.detail-section')
                     loadJsonData(moreInfoClicker)
+                    moreInfoClicker.toggle();
+       });*/
+    $(document.body).on('click','.more-info',function() {
+                    var elementA = $(this).parentsUntil('.row.article').last().parent();
+                    var id       = elementA.attr("id"); 
+                    console.log(elementA.html());
+                    var moreInfoClicker =  elementA.find('.detail-section')
+                    loadJsonData2(id,elementA);
                     moreInfoClicker.toggle();
        });
 }
 /* a specific details for a roda */
 function initLatestRoda() {
      var articlesContainer = $(document).find('.col-md-12.articles');
-     var latestArticle =  $('.row.article:last');
+     var latestArticle =  $('#article-template:last');
      var template;
    
      //Load template in local variable template must be on local 
@@ -35,9 +44,10 @@ function initLatestRoda() {
       type: 'get',
       success: function(data) {
         template = data;
+        alert(template );
       }
      });
-     //Data binding
+    
      $.ajax({
       url: 'assets/data/latest.json',
       type: 'get',
@@ -47,16 +57,19 @@ function initLatestRoda() {
        $.each(data, function(key, item) {
         articlesContainer.append(template);
         latestArticle =  $('.row.article:last');
+       
+        console.log("Latest article"+latestArticle.attr( "id" ));
         latestArticle.find('.Title').text(item.Title);
         latestArticle.find('.detail-section').text(item.Description);
         latestArticle.find('.location').text(item.Location);
         latestArticle.find('date').text(item.Date);
         latestArticle.find('.img-responsive.center-block').attr("src",item.Image);
+        latestArticle.find('.img-responsive.center-block').attr("id",item.id);   
         });
             },
             error: function(e) {
                 console.log('error message'+e.message);
-                /*alert('Error');*/
+                        /*alert('Error');*/
             }
     });
 }
@@ -72,15 +85,13 @@ function fetchLatestRoda() {
                     },
                     error: function(e) {
                         console.log('error message'+e.message);
-                        /*alert('Error');*/
                     }
              });
 }
-
-/* Load a specific details for a roda */
+/* Load  a specific details for a roda */
 function loadJsonData(moreInfoElement) {
             $.ajax({
-                    url: 'assets/data/article.json',
+                    url: 'assets/data/latest.json',
                     type: 'get',
                     dataType : 'json',
                     success: function(data) {
@@ -94,7 +105,27 @@ function loadJsonData(moreInfoElement) {
              });
 }
 
-/* This will be executed once the document is ready */
+/* Load  a specific details for a roda */
+function loadJsonData2(id, detail) {
+            $.ajax({
+                    url: 'assets/data/latest.json',
+                    type: 'get',
+                    dataType : 'json',
+                    success: function(data) {
+                    $.each(data, function(key, item) {
+                        console.log("Article ID"+id);
+                        if (id ==  item.id){
+                            detail.text(item.Description);
+                        }
+                    });
+                    },
+                    error: function(e) {
+                        console.log('error message'+e.message);
+                    }
+             });
+}
+
+// this will be executed once the document is ready
 $(document).ready(function () {
     prepareEventHandlers();
     initLatestRoda();
