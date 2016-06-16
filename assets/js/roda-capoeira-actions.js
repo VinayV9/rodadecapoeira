@@ -25,10 +25,9 @@ function prepareEventHandlers() {
     $(document.body).on('click','.more-info',function() {
                     var elementA = $(this).parentsUntil('.row.article').last().parent();
                     var id       = elementA.attr("id"); 
-                    console.log(elementA.html());
                     var moreInfoClicker =  elementA.find('.detail-section')
-                    loadJsonData2(id,elementA);
-                    moreInfoClicker.toggle();
+                    loadArticleDetailById(id,elementA);
+                    moreInfoClicker.slideToggle();
        });
 }
 /* a specific details for a roda */
@@ -44,7 +43,6 @@ function initLatestRoda() {
       type: 'get',
       success: function(data) {
         template = data;
-        alert(template );
       }
      });
     
@@ -57,8 +55,6 @@ function initLatestRoda() {
        $.each(data, function(key, item) {
         articlesContainer.append(template);
         latestArticle =  $('.row.article:last');
-       
-        console.log("Latest article"+latestArticle.attr( "id" ));
         latestArticle.find('.Title').text(item.Title);
         latestArticle.find('.detail-section').text(item.Description);
         latestArticle.find('.location').text(item.Location);
@@ -106,7 +102,7 @@ function loadJsonData(moreInfoElement) {
 }
 
 /* Load  a specific details for a roda */
-function loadJsonData2(id, detail) {
+function loadArticleDetailById(id, detail) {
             $.ajax({
                     url: 'assets/data/latest.json',
                     type: 'get',
