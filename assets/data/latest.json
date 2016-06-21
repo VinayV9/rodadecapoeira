@@ -29,21 +29,22 @@
     "Image":"assets/images/Roda Angoleiros Do Mar.jpg" 
    
 },
- {
-    "ID": 5,
-    "Title": "Roda Mano no Chao",
-    "Description": "Escola de capoeira mano no chao",
-   "Date": "18 Jul 206",
-    "Location": 0,
-    "Image":"assets/images/Cabaca_um_dois_tres_quatro.jpg" 
-   
-},
 {
     "ID": 5,
-    "Title": "Roda ABCA",
-    "Description": "Roda de Associacao Brazileira de Capoeira Angola",
-    "Date": "18 Jul 206",
-    "Location": "Pelhourinho, Salvador BA",
+    "Title": "Roda Angoleiro Do Mar",
+    "Description": "Escola de capoeira mano no chao",
+    "Date": "18 Jul 2016",
+    "Location": "Ilha de Itaparica, Salavador BA",
     "Image":"assets/images/ABCA_fotoPauloMagalhaes.jpg" 
    
-}]
+},
+ {
+    "ID": 6,
+    "Title": "Roda ABCA",
+    "Description": "Roda de Associacao Brazileira de Capoeira Angola",
+    "Date": "18 Jul 2016",
+    "Location": "Pelhouriho, Salvador BA",
+    "Image":"assets/images/ABCA_fotoPauloMagalhaes.jpg" 
+   
+}
+]

@@ -1,6 +1,7 @@
 /*jslint browser: true*/
 /*global $, jQuery, alert*/
 
+// TODO: User Filters: http://jsfiddle.net/giorgitbs/52ak9/1/
 
 // TODO fix issue with event not loaded when generating dynamic content
 // http://stackoverflow.com/questions/15090942/jquery-event-handler-not-working-on-dynamic-content
