@@ -38,3 +38,8 @@
     border-radius: 5px;
     padding: 15px;
 }
+.nav-pills {
+    margin: 0 auto;
+    padding: 0;
+    width: 400px;
+}

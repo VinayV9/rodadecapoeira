@@ -1,7 +1,7 @@
 /*jslint browser: true*/
 /*global $, jQuery, alert*/
 
-// TODO: User Filters: http://jsfiddle.net/giorgitbs/52ak9/1/
+// TODO: User Filters:  http://jsfiddle.net/giorgitbs/52ak9/1/
 
 // TODO fix issue with event not loaded when generating dynamic content
 // http://stackoverflow.com/questions/15090942/jquery-event-handler-not-working-on-dynamic-content
@@ -126,4 +126,19 @@ function loadArticleDetailById(id, detail) {
 $(document).ready(function () {
     prepareEventHandlers();
     initLatestRoda();
+        (function ($) {
+
+        $('#filter').keyup(function () {
+
+            var rex = new RegExp($(this).val(), 'i');
+            $('.searchable tr').hide();
+            $('.searchable tr').filter(function () {
+                return rex.test($(this).text());
+            }).show();
+
+        })
+
+    }(jQuery));
+
+
 });
