@@ -126,19 +126,14 @@ function loadArticleDetailById(id, detail) {
 $(document).ready(function () {
     prepareEventHandlers();
     initLatestRoda();
-        (function ($) {
-
-        $('#filter').keyup(function () {
-
-            var rex = new RegExp($(this).val(), 'i');
-            $('.searchable tr').hide();
-            $('.searchable tr').filter(function () {
+    $('#filter').keyup(function () {
+    var rex = new RegExp($(this).val(), 'i');
+            $('.row.article').hide();
+            $('.row.article').filter(function () {
+                console.log($(this).text());
                 return rex.test($(this).text());
             }).show();
 
-        })
-
-    }(jQuery));
-
+    })
 
 });
