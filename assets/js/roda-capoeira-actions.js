@@ -56,7 +56,7 @@ function initLatestRoda() {
        $.each(data, function(key, item) {
         articlesContainer.append(template);
         latestArticle =  $('.row.article:last');
-        latestArticle.find('.Title').text(item.Title);
+        latestArticle.find('.title').text(item.Title);
         latestArticle.find('.detail-section').text(item.Description);
         latestArticle.find('.location').text(item.Location);
         latestArticle.find('date').text(item.Date);
@@ -111,9 +111,9 @@ function loadArticleDetailById(id, detail) {
                     success: function(data) {
                     $.each(data, function(key, item) {
                         console.log("Article ID"+id);
-                        if (id ==  item.id){
+                    if (id ==  item.id){
                             detail.text(item.Description);
-                        }
+                    }
                     });
                     },
                     error: function(e) {
@@ -122,18 +122,22 @@ function loadArticleDetailById(id, detail) {
              });
 }
 
+function filterRodas()  {
+    $('#filter').keyup(function () {
+    var rex = new RegExp($(this).val(), 'i');
+                $('.row.article').hide();
+                $('.row.article').filter(function () {
+                    console.log($(this).text());
+                    return rex.test($(this).text());
+                }).show();
+
+    })
+}
+
 // this will be executed once the document is ready
 $(document).ready(function () {
     prepareEventHandlers();
     initLatestRoda();
-    $('#filter').keyup(function () {
-    var rex = new RegExp($(this).val(), 'i');
-            $('.row.article').hide();
-            $('.row.article').filter(function () {
-                console.log($(this).text());
-                return rex.test($(this).text());
-            }).show();
-
-    })
+    filterRodas();
 
 });
